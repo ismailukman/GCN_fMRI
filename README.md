@@ -15,7 +15,7 @@ For questions about the original work, please contact: lebo.wang@email.ucr.edu
 The data files are not included in this repository due to size limitations. Please download them from the original repository:
 
 ### HCP Dataset
-- [HCP Data (100 unrelated subjects)](https://drive.google.com/file/d/1l029ZuOIUY5gehBZCAyHaJqMNuxRHTFc/view?usp=sharing) - Save as `HCP.h5`
+- [HCP Data (100 unrelated subjects)](https://drive.google.com/file/d/1l029ZuOIUY5gehBZCAyHaJqMNuxRHTFc/view?usp=sharing) - Save as `HCP_rfMRI_100s4s_236_MGTR_matlab_train_val_test.h5`
 - [FC matrix](https://drive.google.com/file/d/1WP4_9bps-NbX6GNBnhFu8itV3y1jriJL/view?usp=sharing) - Save as `FC.npy`
 
 ### ABIDE Dataset
@@ -31,7 +31,7 @@ This code is optimized to run on Kaggle with GPU/TPU support.
 ### Quick Start on Kaggle
 
 1. **Upload data to Kaggle Dataset**
-   - Download the data files from the links above (HCP.h5 and FC.npy)
+   - Download the data files from the links above (HCP_rfMRI_100s4s_236_MGTR_matlab_train_val_test.h5 and FC.npy)
    - Create a new Kaggle dataset and upload these files
    - Name your dataset (e.g., "fmri-data")
 
@@ -68,5 +68,5 @@ The Kaggle notebook includes several GPU optimizations:
 The notebook expects your Kaggle dataset at: `/kaggle/input/fmri-data/`
 
 Make sure your dataset contains:
-- `HCP.h5` - Human Connectome Project data
+- `HCP_rfMRI_100s4s_236_MGTR_matlab_train_val_test.h5` - Human Connectome Project data
 - `FC.npy` - Functional connectivity matrix
