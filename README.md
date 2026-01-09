@@ -36,8 +36,8 @@ This code is optimized to run on Kaggle with GPU/TPU support.
    - Name your dataset (e.g., "fmri-data")
 
 2. **Create a new Kaggle Notebook**
-   - Enable GPU: Settings → Accelerator → Select "GPU T4 x2"
-   - Enable Internet: Settings → Internet → Turn ON
+   - **Enable Internet: Settings → Internet → Turn ON** (REQUIRED - code loads from GitHub)
+   - Enable GPU: Settings → Accelerator → Select "GPU T4 x2" (Recommended)
    - Add your fMRI dataset: Click "Add Data" → Search for your dataset → Add it
 
 3. **Use the provided notebook**
