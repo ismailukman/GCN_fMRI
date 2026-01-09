@@ -37,11 +37,12 @@ This code is optimized to run on Kaggle with GPU/TPU support.
 
 2. **Create a new Kaggle Notebook**
    - **Enable Internet: Settings → Internet → Turn ON** (REQUIRED - code loads from GitHub)
-   - Enable GPU: Settings → Accelerator → Select "GPU T4 x2" (Recommended)
    - Add your fMRI dataset: Click "Add Data" → Search for your dataset → Add it
+   - Note: GPU T4 is pre-configured in the notebook (no manual setup needed)
 
 3. **Use the provided notebook**
    - Upload [kaggle_run_HCP.ipynb](kaggle_run_HCP.ipynb) or create a new notebook
+   - **The notebook is pre-configured with GPU T4** - No need to manually enable GPU
    - The notebook expects data at `/kaggle/input/fmri-data/`
    - Run all cells to start training
 
