@@ -26,26 +26,30 @@ Place all downloaded data files in the repository root directory.
 
 ## Running on Kaggle
 
-This code is optimized to run on Kaggle with GPU/TPU support. Follow these steps:
+This code is optimized to run on Kaggle with GPU/TPU support.
 
 ### Quick Start on Kaggle
 
-1. **Create a new Kaggle Notebook**
-2. **Enable GPU**: Go to Settings → Accelerator → Select "GPU T4 x2"
-3. **Enable Internet**: Settings → Internet → Turn ON
-4. **Upload the Kaggle notebook**: Upload [kaggle_run_HCP.ipynb](kaggle_run_HCP.ipynb) or create a new notebook with the following setup:
+1. **Upload data to Kaggle Dataset**
+   - Download the data files from the links above (HCP.h5 and FC.npy)
+   - Create a new Kaggle dataset and upload these files
+   - Name your dataset (e.g., "fmri-data")
 
-```python
-# Clone this repository
-!git clone https://github.com/ismailukman/GCN_fMRI.git
-%cd GCN_fMRI
-```
+2. **Create a new Kaggle Notebook**
+   - Enable GPU: Settings → Accelerator → Select "GPU T4 x2"
+   - Enable Internet: Settings → Internet → Turn ON
+   - Add your fMRI dataset: Click "Add Data" → Search for your dataset → Add it
+
+3. **Use the provided notebook**
+   - Upload [kaggle_run_HCP.ipynb](kaggle_run_HCP.ipynb) or create a new notebook
+   - The notebook expects data at `/kaggle/input/fmri-data/`
+   - Run all cells to start training
 
 ### Features of the Kaggle Notebook
 
 The provided `kaggle_run_HCP.ipynb` includes:
 - **Direct GitHub integration** - Code loaded directly from this repository
-- **Automatic data download** - Downloads datasets from Google Drive
+- **Kaggle dataset integration** - Reads data from `/kaggle/input/fmri-data/`
 - **GPU/TPU optimization** - Configured with mixed precision training and XLA compilation
 - **Increased batch size** - Optimized for GPU memory (batch_size=16)
 - **Training visualization** - Real-time plots and TensorBoard integration
@@ -59,26 +63,10 @@ The Kaggle notebook includes several GPU optimizations:
 - Memory growth configuration to prevent OOM errors
 - Larger batch sizes for better GPU utilization
 
-### Alternative: Manual Setup
+### Dataset Path
 
-If you prefer to set up manually:
+The notebook expects your Kaggle dataset at: `/kaggle/input/fmri-data/`
 
-```python
-# 1. Clone repository
-!git clone https://github.com/ismailukman/GCN_fMRI.git
-%cd GCN_fMRI
-
-# 2. Download data files
-!pip install -q gdown
-!gdown 1l029ZuOIUY5gehBZCAyHaJqMNuxRHTFc -O HCP.h5
-!gdown 1WP4_9bps-NbX6GNBnhFu8itV3y1jriJL -O FC.npy
-
-# 3. Configure GPU
-import tensorflow as tf
-gpus = tf.config.list_physical_devices('GPU')
-for gpu in gpus:
-    tf.config.experimental.set_memory_growth(gpu, True)
-
-# 4. Run training
-%run run_HCP.py
-```
+Make sure your dataset contains:
+- `HCP.h5` - Human Connectome Project data
+- `FC.npy` - Functional connectivity matrix
