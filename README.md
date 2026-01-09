@@ -28,41 +28,76 @@ Place all downloaded data files in the repository root directory.
 
 This code is optimized to run on Kaggle with GPU/TPU support.
 
-### Quick Start on Kaggle
+**Two versions available:**
+- **Standalone Version (Recommended)**: No Internet required - [kaggle_run_HCP_standalone.ipynb](kaggle_run_HCP_standalone.ipynb)
+- **GitHub Version**: Requires Internet to clone code - [kaggle_run_HCP.ipynb](kaggle_run_HCP.ipynb)
+
+### Option 1: Standalone Version (Recommended - No Internet Needed)
+
+**Advantages:**
+- ✅ No Internet connection required
+- ✅ No git clone errors
+- ✅ Faster startup
+- ✅ More reliable
+
+**Setup:**
 
 1. **Upload data to Kaggle Dataset**
-   - Download the data files from the links above (HCP_rfMRI_100s4s_236_MGTR_matlab_train_val_test.h5 and FC.npy)
+   - Download HCP_rfMRI_100s4s_236_MGTR_matlab_train_val_test.h5 and FC.npy from links above
    - Create a new Kaggle dataset and upload these files
    - Name your dataset (e.g., "fmri-data")
 
-2. **Create a new Kaggle Notebook**
-   - **Enable Internet: Settings → Internet → Turn ON** (REQUIRED - code loads from GitHub)
-   - Add your fMRI dataset: Click "Add Data" → Search for your dataset → Add it
-   - Note: GPU T4 is pre-configured in the notebook (no manual setup needed)
+2. **Download Python files from GitHub**
+   - Go to https://github.com/ismailukman/GCN_fMRI
+   - Download `model.py` (click file → Raw → Save)
+   - Download `utils.py` (click file → Raw → Save)
 
-3. **Use the provided notebook**
-   - Upload [kaggle_run_HCP.ipynb](kaggle_run_HCP.ipynb) or create a new notebook
-   - **The notebook is pre-configured with GPU T4** - No need to manually enable GPU
-   - The notebook expects data at `/kaggle/input/fmri-data/`
+3. **Create Kaggle Notebook**
+   - Upload [kaggle_run_HCP_standalone.ipynb](kaggle_run_HCP_standalone.ipynb)
+   - Upload `model.py` and `utils.py` using File → Upload
+   - Add your fMRI dataset: Click "Add Data" → Search for your dataset → Add it
+   - GPU T4 is pre-configured
+
+4. **Run the notebook**
+   - Run all cells to start training
+   - No Internet required!
+
+### Option 2: GitHub Version (Requires Internet)
+
+**Use this if you prefer to clone from GitHub directly.**
+
+**Setup:**
+
+1. **Upload data to Kaggle Dataset** (same as Option 1)
+
+2. **Create Kaggle Notebook**
+   - **Enable Internet: Settings → Internet → Turn ON** (REQUIRED)
+   - Upload [kaggle_run_HCP.ipynb](kaggle_run_HCP.ipynb)
+   - Add your fMRI dataset: Click "Add Data" → Search for your dataset → Add it
+   - GPU T4 is pre-configured
+
+3. **Run the notebook**
+   - The notebook will clone code from GitHub automatically
    - Run all cells to start training
 
-### Features of the Kaggle Notebook
+### Features of Both Notebooks
 
-The provided `kaggle_run_HCP.ipynb` includes:
-- **Direct GitHub integration** - Code loaded directly from this repository
+Both versions include:
+- **GPU T4 pre-configured** - Automatically enabled for faster training
 - **Kaggle dataset integration** - Reads data from `/kaggle/input/fmri-data/`
-- **GPU/TPU optimization** - Configured with mixed precision training and XLA compilation
+- **GPU/TPU optimization** - Mixed precision training (FP16) and XLA compilation
 - **Increased batch size** - Optimized for GPU memory (batch_size=16)
 - **Training visualization** - Real-time plots and TensorBoard integration
 - **Model checkpointing** - Automatic saving of best models
+- **Error handling** - Clear messages if files are missing
 
 ### Performance Optimizations
 
-The Kaggle notebook includes several GPU optimizations:
-- Mixed precision training (FP16) for faster computation
+Both notebooks include GPU optimizations:
+- Mixed precision training (FP16) for 2-3x faster computation
 - XLA (Accelerated Linear Algebra) compilation
 - Memory growth configuration to prevent OOM errors
-- Larger batch sizes for better GPU utilization
+- Larger batch sizes (16) for better GPU utilization
 
 ### Dataset Path
 
